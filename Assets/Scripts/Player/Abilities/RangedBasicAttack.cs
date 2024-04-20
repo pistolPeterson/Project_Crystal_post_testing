@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,7 +13,9 @@ public class RangedBasicAttack : Ability
     [SerializeField] private bool isPlayerShooting;
     [SerializeField] private float enemyFireRate = 5.0f;
     [SerializeField] private float playerFireRate = 0.1f;
-
+    protected float maxLifeTime = 5f;
+    [SerializeField] protected int maxDamage = 10; // The damage normal/max dealt by the projectile
+    [SerializeField] protected int currentDamage = 10; // current damage the projectile does
     [HideInInspector] public UnityEvent OnAttack;
     private float lastPlayerAttackTime = 0f;
     private float lastEnemyAttackTime = 0f;
@@ -33,20 +36,33 @@ public class RangedBasicAttack : Ability
     }
 
     // Method to spawn a projectile
-    public void SpawnProjectile(Vector2 moveDirection)  {
-        // Get a pooled object
+    public void SpawnProjectile(Vector2 moveDirection)  
+    {
         GameObject go = Instantiate(projectilePrefab, transform);
-        // Set the position and rotation of the projectile
+      
         go.transform.position = this.transform.position;
         go.transform.rotation = Quaternion.identity;
-        // Get the Projectile component and set its move direction
+       
         Projectile projectile = go.GetComponent<Projectile>();
-        projectile.SetMoveDirection(moveDirection, isPlayerShooting);
-        projectile.CurrentDamage = currentDamage;
-        projectile.SetLifeTime(maxLifeTime);
+
+        ProjectileData projectileData = new ProjectileData();
+        InitialiazeProjectileData(projectileData, moveDirection);
+        projectile.SetProjectileData(projectileData);
+        //projectile.CurrentDamage = currentDamage;
+        //projectile.SetLifeTime(maxLifeTime);
         // Activate the projectile
         go.SetActive(true);
     }
+
+    private void InitialiazeProjectileData(ProjectileData projectileData, Vector2 moveDirection)
+    {
+        projectileData.ProjectileSpeed = 1000;
+        projectileData.ProjectileDamage = currentDamage;
+        projectileData.ProjectileLifetime = 5f;
+        projectileData.MoveDirection = moveDirection;
+        projectileData.Shooter = isPlayerShooting ? Shooter_Enum.PLAYER : Shooter_Enum.ENEMY;
+    }
+
     public void ShootIfActive() {
         if (isOnCoolDown)
             return;

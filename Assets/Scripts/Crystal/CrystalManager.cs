@@ -30,7 +30,7 @@ public class CrystalManager : MonoBehaviour
         Init();        
     }
     private void Start() {
-        bossCrystal = FindBossCrystal();
+        //bossCrystal = FindBossCrystal();
         BossIndicatorText.enabled = false;
     }
     public void SetCurrentCrystal(Crystal curr) {
@@ -62,7 +62,7 @@ public class CrystalManager : MonoBehaviour
             }
         }
         OnCrystalDeActivate?.Invoke();
-
+        /*
         if (CrystalsPurified == crystals.Count-2) {
             Debug.Log("BEGIN THE FINAL TEST");
             bossCrystal.UpdateOriginalYPos(bossCrystalLoc.position.y);
@@ -71,7 +71,7 @@ public class CrystalManager : MonoBehaviour
         }
         if (bossCrystal.CurrentState == CrystalState.PURIFIED) {
             OnAllCrystalsComplete?.Invoke();
-        }
+        }*/
     }
     private void Init() {
         if (Instance) {

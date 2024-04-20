@@ -6,17 +6,20 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
+public enum Shooter_Enum
+{
+    None,
+    PLAYER,
+    ENEMY
+}
 // The Projectile class handles the behavior of projectiles in the game.
 public class Projectile : MonoBehaviour
 {
     [SerializeField] private float projectileSpeed = 1000f; // The speed of the projectile.
     private float lifeTime = 2f; // The maximum lifetime of the projectile.
     public int CurrentDamage { get; set; } // current damage the projectile does
-
-    private const string ENEMY_TAG = "Enemy"; // Tag used to identify enemies.
-    private const string PLAYER_TAG = "Player"; // Tag used to identify the player.
-    private const string CRYSTAL_TAG = "Crystal"; // Tag used to identify the crystal.
-    private const string BOSS_CRYSTAL_TAG = "BossCrystal"; // Tag used to identify the boss crystal.
+    private Shooter_Enum shooter;
+    
     private float timer = 0f; // Timer used to track the lifetime of the projectile.
     private Rigidbody2D rb2D; // The Rigidbody2D component of the projectile.
     private Vector2 moveDirection; // The direction in which the projectile is moving.
@@ -51,12 +54,19 @@ public class Projectile : MonoBehaviour
     }
 
     public void MoveProjectile() {
-        // Calculate the angle of the projectile's direction in degrees.
         float angle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg;
-        // Set the rotation of the projectile to face the direction it's moving, smoothly transitioning over time.
         transform.rotation = Quaternion.Euler(0f, 0f, Mathf.LerpAngle(transform.rotation.eulerAngles.z, angle, projectileSpeed * Time.deltaTime));
-        // Set the velocity of the projectile by multiplying the direction, speed, and time since the last frame.
         rb2D.velocity = moveDirection * projectileSpeed * Time.fixedDeltaTime;
+    }
+
+    public void SetProjectileData(ProjectileData projectileData)
+    {
+        
+        CurrentDamage = projectileData.ProjectileDamage;
+        projectileSpeed = projectileData.ProjectileSpeed;
+        lifeTime = projectileData.ProjectileLifetime;
+        shooter = projectileData.Shooter;
+        moveDirection = projectileData.MoveDirection;
     }
 
     // Sets the direction in which the projectile should move.
@@ -68,7 +78,7 @@ public class Projectile : MonoBehaviour
 
     // OnTriggerEnter2D is called when the Collider2D other enters the trigger (2D physics only).
     private void OnTriggerEnter2D(Collider2D collider)
-    {     
+    {   /*  
         if (collider.gameObject.CompareTag(ENEMY_TAG))
         {
             if (isPlayerShooting) {
@@ -113,7 +123,43 @@ public class Projectile : MonoBehaviour
             potentialCrystalHealth.RemoveHealth(CurrentDamage);
             
             //DisableProjectile(); // Uncomment this to not have piercing on crystal.
+        }*/
+
+        HealthPoints objectHealthPoints = collider.gameObject.GetComponent<HealthPoints>();
+        if (!objectHealthPoints) return;
+        switch(objectHealthPoints)
+        {
+            case PlayerHealthPoints:
+                HandlePlayerHit(objectHealthPoints);
+                break;
+            case EnemyHealthPoints:
+                HandleEnemyHit(objectHealthPoints);
+                break;
+            case CrystalHealthPoints:
+                HandleCrystalHit(objectHealthPoints);
+                break;
+            default:
+                Debug.Log("tf is this " + objectHealthPoints);
+                break;
         }
+    }
+
+    private void HandleCrystalHit(HealthPoints objectHealthPoints)
+    {
+        if (shooter == Shooter_Enum.PLAYER) return;
+        objectHealthPoints.RemoveHealth(CurrentDamage);
+    }
+
+    private void HandleEnemyHit(HealthPoints objectHealthPoints)
+    {
+        if (shooter == Shooter_Enum.ENEMY) return;
+        objectHealthPoints.RemoveHealth(CurrentDamage);
+    }
+
+    private void HandlePlayerHit(HealthPoints objectHealthPoints)
+    {
+        if (shooter == Shooter_Enum.PLAYER) return;
+        objectHealthPoints.RemoveHealth(CurrentDamage);
     }
 
     private void DisableProjectile()

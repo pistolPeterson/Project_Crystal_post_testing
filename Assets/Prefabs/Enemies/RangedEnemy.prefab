@@ -92,7 +92,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7200649159883884705
 RectTransform:
   m_ObjectHideFlags: 0
@@ -874,7 +874,7 @@ MonoBehaviour:
   - {x: 0.80405426, y: -1.2094054, z: 0}
   m_ShapePathHash: -803534617
   m_Mesh: {fileID: 0}
-  m_InstanceId: 77868
+  m_InstanceId: 98522
   m_LocalBounds:
     m_Center: {x: -0.007171631, y: -0.0022640228, z: 0}
     m_Extent: {x: 1.0977707, y: 1.2089868, z: 0}
@@ -1029,7 +1029,6 @@ MonoBehaviour:
   currentDamage: 6
   maxLifeTime: 2
   cooldown: 0
-  manaCost: 0
   IsActive: 0
   userMana: {fileID: 0}
   OnAbilityUsage:

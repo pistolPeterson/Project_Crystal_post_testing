@@ -9,7 +9,9 @@ public class PiercingShotAbility : Ability
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private int maxPiercingAmount = 1;
     private Actions actions;
-
+    protected float maxLifeTime = 5f;
+    [SerializeField] protected int maxDamage = 10; // The damage normal/max dealt by the projectile
+    [SerializeField] protected int currentDamage = 10; // current damage the projectile does
     void Awake()
     {
         actions = GetComponentInParent<Actions>();
