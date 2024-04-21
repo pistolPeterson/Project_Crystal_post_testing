@@ -15,7 +15,7 @@ public enum Shooter_Enum
 // The Projectile class handles the behavior of projectiles in the game.
 public class Projectile : MonoBehaviour
 {
-    [SerializeField] private float projectileSpeed = 1000f; // The speed of the projectile.
+    private float projectileSpeed = 1000f; // The speed of the projectile.
     private float lifeTime = 2f; // The maximum lifetime of the projectile.
     public int CurrentDamage { get; set; } // current damage the projectile does
     private Shooter_Enum shooter;
@@ -27,16 +27,9 @@ public class Projectile : MonoBehaviour
 
     [HideInInspector] public UnityEvent OnProjectileDisabled;
 
-    private void Awake()    {
-        rb2D = GetComponent<Rigidbody2D>();
-    }
-    private void Start()
+    private void Awake()    
     {
-        //projectileManager = GetComponent<ProjectileManager>();
-        //Debug.Log("Start");
-        ////The Problem is that everytime the projectile is created it set the currentDamage as the maxDamage because Start() is always called when the proj is created
-        ////It should only set the current damage to max one time.
-        //currentDamage = maxDamage;
+        rb2D = GetComponent<Rigidbody2D>();
     }
 
     private void FixedUpdate()
@@ -45,7 +38,7 @@ public class Projectile : MonoBehaviour
 
         timer += Time.deltaTime;
 
-        // If the projectile has existed for longer than its maximum lifetime, disable it
+       
         if (timer >= lifeTime)
         {
             DisableProjectile();
@@ -53,15 +46,15 @@ public class Projectile : MonoBehaviour
         }
     }
 
-    public void MoveProjectile() {
+    public void MoveProjectile() 
+    {
         float angle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0f, 0f, Mathf.LerpAngle(transform.rotation.eulerAngles.z, angle, projectileSpeed * Time.deltaTime));
         rb2D.velocity = moveDirection * projectileSpeed * Time.fixedDeltaTime;
     }
 
     public void SetProjectileData(ProjectileData projectileData)
-    {
-        
+    {      
         CurrentDamage = projectileData.ProjectileDamage;
         projectileSpeed = projectileData.ProjectileSpeed;
         lifeTime = projectileData.ProjectileLifetime;

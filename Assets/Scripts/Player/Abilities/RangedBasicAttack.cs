@@ -48,9 +48,7 @@ public class RangedBasicAttack : Ability
         ProjectileData projectileData = new ProjectileData();
         InitialiazeProjectileData(projectileData, moveDirection);
         projectile.SetProjectileData(projectileData);
-        //projectile.CurrentDamage = currentDamage;
-        //projectile.SetLifeTime(maxLifeTime);
-        // Activate the projectile
+        
         go.SetActive(true);
     }
 
@@ -71,26 +69,26 @@ public class RangedBasicAttack : Ability
         if (GetCurrentMana() >= manaCost)
             AbilityUsage();
     }
-    // Method to start the attack
+
     public override void AbilityUsage() {
 
-        if (!isOnCooldown) return; // Check if the player can shoot
+        if (!isOnCooldown) return; 
         if (Time.time < lastPlayerAttackTime + playerFireRate) return;
 
-        // Get the mouse position and the object position
+        
         Vector2 mousePosition = Mouse.current.position.ReadValue();
         Vector2 objectPosition = Camera.main.WorldToScreenPoint(transform.position);
-        // Calculate the direction of the attack
+        
         Vector2 direction = (mousePosition - objectPosition).normalized;
-        // Spawn the projectile
         SpawnProjectile(direction);
         UseManaPoints();
         lastPlayerAttackTime = Time.time;
-        isOnCooldown = false; // Set canPlayerShoot to false
-        StartCoroutine(ResetPlayerShoot()); // Start the coroutine to reset canPlayerShoot
+        isOnCooldown = false; 
+        StartCoroutine(ResetPlayerShoot());
     }
 
-    public void AttackTarget(Transform currentTarget) {
+    public void AttackTarget(Transform currentTarget) 
+    {
 
         if(Time.time < lastEnemyAttackTime + enemyFireRate) return;
         

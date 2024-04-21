@@ -33,19 +33,20 @@ public class EnemyAnimation : MonoBehaviour
         rangedBA.OnAttack.AddListener(PlayAttack);
 
     }
-    public void PlayAttack() {
+    public void PlayAttack() 
+    {
         animControl.PlayAttack();
     }
     
     private void Update()
     {
         // enemySpriteRenderer.flipX = enemyAI.GetMovementState() == MovementState.LEFT; 
-        
+        /*
         if (enemyAI.GetMovementState() == MovementState.LEFT) {
             enemyVisual.transform.rotation = Quaternion.Euler(0, -180, 0);
         } else {
             enemyVisual.transform.rotation = Quaternion.Euler(0, 0, 0);
-        }
+        }*/
     }
 
     public void UpdateEnemyHealth() {

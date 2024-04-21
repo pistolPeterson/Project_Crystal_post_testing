@@ -20,7 +20,8 @@ using UnityEngine;
   </summary>
 */
 
-public class EnemyAI : Movement {
+public class EnemyAI : Movement 
+{
 
     [SerializeField] private Transform player;
     [SerializeField] private Transform crystalObject;
