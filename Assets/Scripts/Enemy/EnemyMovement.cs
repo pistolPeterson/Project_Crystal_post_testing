@@ -6,52 +6,62 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     [SerializeField] private float speed = 500f;
+    private bool canMove = true;
+    [Header("DEBUG")]
     [SerializeField] private float currentSpeed;
-    [SerializeField] private float acceleration = 1f;
+ 
+     private const float ACCELERATION = 1000f;
 
     private Rigidbody2D rb2D;
-
-
+    private Transform CurrentTarget { get; set; }
     private void Start()
     {
         rb2D = GetComponent<Rigidbody2D>();
-       
+        CurrentTarget = null;
     }
-
-
-    public void MoveTowardsTarget(Transform target)
-    {
-        Vector3 direction = (target.position - transform.position).normalized;
-        rb2D.velocity = direction * speed;       
-    }
-
 
     private void FixedUpdate()
     {
-        Vector2 moveDir = new Vector2(0.1f, 0.3f);
+        if (!canMove) return;
+
+        if(CurrentTarget != null)
+            MoveToPosition();     
+    }
+
+    private void MoveToPosition()
+    {
+        //determine direction
+        Vector2 moveDirection = (CurrentTarget.position - transform.position).normalized;
 
         // Calculate acceleration effect on current speed
-        currentSpeed += acceleration * Time.fixedDeltaTime;
+        currentSpeed += ACCELERATION * Time.fixedDeltaTime;
 
-        // Clamp speed to prevent exceeding a maximum (optional)
-        currentSpeed = Mathf.Clamp(currentSpeed, 0f, speed); // Max speed is still 'speed'
+        // Clamp speed to prevent exceeding a maximum 
+        currentSpeed = Mathf.Clamp(currentSpeed, 0f, speed); 
 
-        float currXSpeed = currentSpeed * Time.fixedDeltaTime * moveDir.x;
-        float currYSpeed = currentSpeed * Time.fixedDeltaTime * moveDir.y;
+        float currXSpeed = currentSpeed * Time.fixedDeltaTime * moveDirection.x;
+        float currYSpeed = currentSpeed * Time.fixedDeltaTime * moveDirection.y;
 
         rb2D.velocity = new Vector2(currXSpeed, currYSpeed);
     }
 
     [ProButton]
+    private void Debug_SetPlayerAsTarget()
+    {
+       GameObject debugPlayer = GameObject.FindWithTag("Player");
+        CurrentTarget = debugPlayer.transform;
+    }
+
+    [ProButton]
     private void Move()
     {
-        currentSpeed = speed;
+        canMove = true;
     }
 
     [ProButton]
     private void Stop()
     {
-        currentSpeed = 0f;
+        canMove = false;
     }
 
 }

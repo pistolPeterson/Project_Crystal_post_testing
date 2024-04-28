@@ -422,6 +422,37 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &3818786203979959401
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4797894009341317975}
+  m_Layer: 0
+  m_Name: AttackSpawnLocation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4797894009341317975
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3818786203979959401}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.14, y: -0.85, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2343447669287320918}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5281210970760375665
 GameObject:
   m_ObjectHideFlags: 0
@@ -434,10 +465,10 @@ GameObject:
   - component: {fileID: 3954745128208868602}
   - component: {fileID: 4695232702395240104}
   - component: {fileID: 4917669121937368097}
-  - component: {fileID: 7223677986230081562}
   - component: {fileID: 8506391581786044554}
   - component: {fileID: 6853966967484349388}
   - component: {fileID: 333826428042613783}
+  - component: {fileID: 27973614084430927}
   m_Layer: 0
   m_Name: TankEnemy
   m_TagString: Enemy
@@ -462,6 +493,7 @@ Transform:
   - {fileID: 8993497945352709441}
   - {fileID: 2961924268343594234}
   - {fileID: 6739491180392695985}
+  - {fileID: 4797894009341317975}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &3954745128208868602
@@ -477,7 +509,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1000
-  m_LinearDrag: 0
+  m_LinearDrag: 5
   m_AngularDrag: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -581,29 +613,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.4700546, y: 2.0465927}
   m_EdgeRadius: 0
---- !u!114 &7223677986230081562
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5281210970760375665}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c71e02149104c434298ce85b77c8c3aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  baseSpeed: 5
-  maxSpeed: 5
-  curSpeed: 0
-  currentMovementState: 0
-  player: {fileID: 0}
-  crystalObject: {fileID: 0}
-  enemyAIType: 0
-  playerAggroTime: 5
-  avoidTime: 1
-  attackRange: 4
-  enemyCurrentState: 5
 --- !u!114 &8506391581786044554
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -653,6 +662,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathColorTint: {r: 0.8679245, g: 0.1432894, b: 0.1432894, a: 0.62352943}
+--- !u!114 &27973614084430927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5281210970760375665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 984c1342c3fe40f43979202decc176ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 500
+  currentSpeed: 0
 --- !u!1 &5609662506151294143
 GameObject:
   m_ObjectHideFlags: 0
@@ -746,7 +769,6 @@ GameObject:
   - component: {fileID: 8993497945352709441}
   - component: {fileID: 1306762602531067334}
   - component: {fileID: 4268861783813776509}
-  - component: {fileID: 7338658861132368715}
   - component: {fileID: 6613564118738782395}
   - component: {fileID: 5792991449023194857}
   - component: {fileID: 4348047738436935562}
@@ -846,18 +868,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &7338658861132368715
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6453280248707733763}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8d5ba05e165cfb4b95277675b8ad72b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &6613564118738782395
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -874,7 +884,7 @@ MonoBehaviour:
   hpBarCanvas: {fileID: 2497940398578996030}
   hpEnemyFilling: {fileID: 1644870550838940606}
   hp: {fileID: 8506391581786044554}
-  damageNumText: {fileID: 5747379048789549710}
+  enemyAttack: {fileID: 3190428381712713036}
 --- !u!114 &5792991449023194857
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -923,7 +933,7 @@ MonoBehaviour:
   - {x: 0.80792236, y: -1.4052019, z: -0.00000036042184}
   m_ShapePathHash: -1582723859
   m_Mesh: {fileID: 0}
-  m_InstanceId: 98680
+  m_InstanceId: -2940
   m_LocalBounds:
     m_Center: {x: -0.037345886, y: -0.2794497, z: 0}
     m_Extent: {x: 1.4293442, y: 1.1626766, z: 0}
@@ -937,6 +947,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2961924268343594234}
   - component: {fileID: 6591155542283745218}
+  - component: {fileID: 3190428381712713036}
   m_Layer: 0
   m_Name: Abilities
   m_TagString: Untagged
@@ -966,14 +977,11 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8120154399766981587}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff9b249be76e9a3419e3c8e3beac5c3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxDamage: 8
-  currentDamage: 8
-  maxLifeTime: 2
   cooldown: 0
   IsActive: 0
   userMana: {fileID: 0}
@@ -984,7 +992,27 @@ MonoBehaviour:
   isPlayerShooting: 0
   enemyFireRate: 1.2
   playerFireRate: 0.1
+  maxDamage: 8
+  currentDamage: 8
   OnAttack:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &3190428381712713036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8120154399766981587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f13d97b6bc293f4a8010745fbd7043b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackDamage: 1
+  projectilePrefab: {fileID: 971724485026557118, guid: 1c525282c506c7b43b41538f12340261, type: 3}
+  spawnLocation: {fileID: 4797894009341317975}
+  OnEnemyAttack:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &8913473195546533305

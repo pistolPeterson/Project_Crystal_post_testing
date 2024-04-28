@@ -60,6 +60,7 @@ public class Projectile : MonoBehaviour
         lifeTime = projectileData.ProjectileLifetime;
         shooter = projectileData.Shooter;
         moveDirection = projectileData.MoveDirection;
+        Debug.Log("Shooter: " + shooter + " Dir: " +moveDirection );
     }
 
     // Sets the direction in which the projectile should move.
