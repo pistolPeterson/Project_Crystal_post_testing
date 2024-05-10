@@ -4,11 +4,10 @@ using UnityEngine;
 
 public abstract class EnemyAIState : MonoBehaviour
 {
-
     protected EnemyStateHandler enemyStateHandler;
-    public virtual void Awake()
+    public virtual void Start()
     {
-        enemyStateHandler = GetComponent<EnemyStateHandler>();
+        enemyStateHandler = GetComponentInParent<EnemyStateHandler>();
     }
     public abstract void OnStateEnter();
     public abstract void OnStateUpdate();

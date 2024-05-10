@@ -4,11 +4,18 @@ using UnityEngine;
 
 public class EnemyStateHandler : MonoBehaviour
 {
-    private EnemyAIState currentState;
+    [field: Header("States")]
+    [field: SerializeField] public MoveTowardsPlayerES MoveTowardPlayerState { get; private set; }
+    [field: SerializeField] public MoveTowardsCrystalES MoveTowardCrystalState { get; private set; }
+    [field: SerializeField] public AttackCrystalES AttackCrystalState { get; private set; }
+    [field: SerializeField] public AttackPlayerES AttackPlayerES { get; private set; }
+
+    [Header("Debug")]
+    [SerializeField] private EnemyAIState currentState;
 
     void Start() {
+        currentState = MoveTowardCrystalState;
         EnterState();
-
     }
     public void EnterState() {
         currentState.OnStateEnter();

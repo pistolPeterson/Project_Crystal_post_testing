@@ -17,7 +17,7 @@ public class EnemyMovement : MonoBehaviour
     private void Start()
     {
         rb2D = GetComponent<Rigidbody2D>();
-        CurrentTarget = null;
+        //CurrentTarget = null;
     }
 
     private void FixedUpdate()
@@ -51,15 +51,18 @@ public class EnemyMovement : MonoBehaviour
        GameObject debugPlayer = GameObject.FindWithTag("Player");
         CurrentTarget = debugPlayer.transform;
     }
+    public void SetTarget(Transform target) {
+        CurrentTarget = target;
+    }
 
     [ProButton]
-    private void Move()
+    public void Move()
     {
         canMove = true;
     }
 
     [ProButton]
-    private void Stop()
+    public void Stop()
     {
         canMove = false;
     }
