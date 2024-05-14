@@ -150,7 +150,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c535adc3640f4994f984d3fa22d171db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <AttackRange>k__BackingField: 5
+  <AttackRange>k__BackingField: 7
+  basicAttack: {fileID: 4976276736131499519}
   currentCrystal: {fileID: 0}
   movement: {fileID: 3236213025052580574}
   enemyHealth: {fileID: 8506391581786044554}
@@ -1029,7 +1030,7 @@ MonoBehaviour:
   - {x: 0.80405426, y: -1.2094054, z: 0}
   m_ShapePathHash: -803534617
   m_Mesh: {fileID: 0}
-  m_InstanceId: -4356
+  m_InstanceId: -1556
   m_LocalBounds:
     m_Center: {x: -0.007171631, y: -0.0022640228, z: 0}
     m_Extent: {x: 1.0977707, y: 1.2089868, z: 0}
@@ -1208,8 +1209,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f13d97b6bc293f4a8010745fbd7043b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDamage: 1
   projectilePrefab: {fileID: 971724485026557118, guid: 1c525282c506c7b43b41538f12340261, type: 3}
+  attackDamage: 1
+  attackSpeed: 1.5
   spawnLocation: {fileID: 5987814999040677907}
   OnEnemyAttack:
     m_PersistentCalls:

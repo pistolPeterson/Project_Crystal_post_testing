@@ -6,12 +6,12 @@ using UnityEngine.Events;
 public class EnemyRangedBasicAttack : MonoBehaviour
 {
 
-    [SerializeField] private int attackDamage = 1;
     [SerializeField] private GameObject projectilePrefab;
+    [SerializeField] private int attackDamage = 1;
+    [SerializeField] private float attackSpeed = 1.5f;
     [SerializeField] private Transform spawnLocation; 
-    private Transform targetTransform = null;
     [HideInInspector] public UnityEvent OnEnemyAttack;
-
+    private float lastEnemyAttackTime = 0f;
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.Space))
@@ -30,7 +30,7 @@ public class EnemyRangedBasicAttack : MonoBehaviour
     public void AttackTarget(Transform currentTarget)
     {
         Vector2 directionToTarget = (currentTarget.position - transform.parent.transform.position).normalized;
-        SpawnProjectile(directionToTarget);
+        DelayedSpawn(directionToTarget);
         OnEnemyAttack?.Invoke();
     }
 
@@ -45,6 +45,10 @@ public class EnemyRangedBasicAttack : MonoBehaviour
 
         return projectileData;
     }
-
+    public void DelayedSpawn(Vector2 dirToTarget) {
+        if (Time.time < lastEnemyAttackTime + attackSpeed) return;
+        SpawnProjectile(dirToTarget);
+        lastEnemyAttackTime = Time.time;
+    }
 
 }

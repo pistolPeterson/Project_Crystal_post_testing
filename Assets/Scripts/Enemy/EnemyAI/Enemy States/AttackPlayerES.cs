@@ -30,7 +30,8 @@ public class AttackPlayerES : EnemyAIState
 
         if (Vector3.Distance(transform.position, playerTransform.position) > enemyStateHandler.AttackCrystalState.AttackRange) {
             enemyStateHandler.ChangeState(enemyStateHandler.MoveTowardPlayerState);
-        }        
+        }
+        basicAttack.AttackTarget(playerTransform);
     }
     public override void OnStateExit() {
         stateActiveTime = 0f;

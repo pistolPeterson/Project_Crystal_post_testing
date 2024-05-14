@@ -5,6 +5,7 @@ using UnityEngine;
 public class AttackCrystalES : EnemyAIState 
 {    
     [field: SerializeField] public float AttackRange { get; private set; }
+    [SerializeField] private EnemyRangedBasicAttack basicAttack;
     [SerializeField] private Crystal currentCrystal;
     [SerializeField] private EnemyMovement movement;
     [SerializeField] private EnemyHealthPoints enemyHealth;
@@ -19,6 +20,7 @@ public class AttackCrystalES : EnemyAIState
     }
     public override void OnStateUpdate() {
         Debug.Log("Enemy Attaccking");
+        basicAttack.AttackTarget(currentCrystal.transform);
     }
     public override void OnStateExit() {
 
