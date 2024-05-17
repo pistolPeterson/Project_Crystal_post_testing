@@ -28,7 +28,7 @@ public class EnemyAnimation : MonoBehaviour
         WeirdRaeusStuffImScaredToRemove();
         animator = GetComponent<Animator>();
          
-        enemyAttack.OnEnemyAttack.AddListener(PlayAttackAnim);
+        enemyAttack?.OnEnemyAttack.AddListener(PlayAttackAnim); //for ranged snake, melee mino will call method directly
     }
 
 
@@ -43,7 +43,7 @@ public class EnemyAnimation : MonoBehaviour
         }*/
     }
 
-    private void PlayAttackAnim()
+    public void PlayAttackAnim()
     {
         animator.Play(ATTACK_ANIM_TAG);
     }

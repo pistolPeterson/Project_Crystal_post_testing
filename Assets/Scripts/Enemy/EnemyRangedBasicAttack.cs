@@ -12,14 +12,7 @@ public class EnemyRangedBasicAttack : MonoBehaviour
     [SerializeField] private Transform spawnLocation; 
     [HideInInspector] public UnityEvent OnEnemyAttack;
     private float lastEnemyAttackTime = 0f;
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            Transform hiRaeus = FindObjectOfType<PlayerMovement>().transform;
-            AttackTarget(hiRaeus);
-        }
-    }
+  
     private void SpawnProjectile(Vector2 attackDirection)
     {
         GameObject projectileInstancePrefab = Instantiate(projectilePrefab, spawnLocation.position, Quaternion.identity);

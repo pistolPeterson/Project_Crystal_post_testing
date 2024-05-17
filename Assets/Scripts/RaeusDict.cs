@@ -21,7 +21,7 @@ public class RaeusWordDictionary : MonoBehaviour
         raeusDictionaryInstance.Add(new RaeusData() { Word = "Pancake", Definition = "delicious sweet carbs" });
         raeusDictionaryInstance.Add(new RaeusData() { Word = "Music", Definition = "The language of the gods" });
 
-        rpd.raeusDataEntry.Add("Apple", "Red Fruit");
+       // rpd.raeusDataEntry.Add("Apple", "Red Fruit");
     
 
         Debug.Log(ListAllWords());
