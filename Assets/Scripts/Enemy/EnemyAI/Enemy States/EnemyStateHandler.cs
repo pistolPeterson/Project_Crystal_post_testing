@@ -43,4 +43,5 @@ public class EnemyStateHandler : MonoBehaviour
     }
 
     public bool CurrentStateNullCheck() => currentState != null; //have to add this because state handler isnt generic now raeus :)
+    // yes perfect
 }
