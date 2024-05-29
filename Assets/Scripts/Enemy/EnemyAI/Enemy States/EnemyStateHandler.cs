@@ -14,8 +14,7 @@ public class EnemyStateHandler : MonoBehaviour
     [SerializeField] private EnemyAIState currentState;
 
     void Start() {
-        if (!CurrentStateNullCheck()) 
-            return;
+       
 
 
         currentState = MoveTowardCrystalState;
