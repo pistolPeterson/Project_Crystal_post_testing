@@ -821,7 +821,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e6b879f6f7ffd04f8222fc80ecd647d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flashMaterial: {fileID: 6012569834952070308}
+  spriteRenderer: {fileID: 6012569834952070308}
   flashColor: {r: 1, g: 0, b: 0, a: 1}
   shakeDuration: 0.1
   shakeMagnitude: 0.15

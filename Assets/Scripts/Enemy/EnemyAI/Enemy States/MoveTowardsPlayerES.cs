@@ -15,7 +15,6 @@ public class MoveTowardsPlayerES : EnemyAIState
         base.Start();
     }
     public override void OnStateEnter() {
-        Debug.Log("Enter Move Towards Player");
         movement.SetTarget(playerTransform);
         movement.Move();
     }

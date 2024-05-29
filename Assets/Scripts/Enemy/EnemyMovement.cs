@@ -6,7 +6,7 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     [SerializeField] private float speed = 500f;
-    private bool canMove = true;
+    public bool canMove = true;
     [Header("DEBUG")]
     [SerializeField] private float currentSpeed;
  
@@ -24,8 +24,8 @@ public class EnemyMovement : MonoBehaviour
     {
         if (!canMove) return;
 
-        if(CurrentTarget != null)
-            MoveToPosition();     
+        if (CurrentTarget != null)
+           MoveToPosition();     
     }
 
     private void MoveToPosition()

@@ -684,6 +684,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 250
+  canMove: 1
   currentSpeed: 0
 --- !u!1 &5883237370344968144
 GameObject:
@@ -867,6 +868,7 @@ GameObject:
   - component: {fileID: 1883295130148061768}
   - component: {fileID: 8510151263338052472}
   - component: {fileID: 5621713984815951882}
+  - component: {fileID: 6461549006331171609}
   m_Layer: 0
   m_Name: Enemy Visual
   m_TagString: Untagged
@@ -993,7 +995,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e6b879f6f7ffd04f8222fc80ecd647d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flashMaterial: {fileID: 1306762602531067334}
+  spriteRenderer: {fileID: 1306762602531067334}
   flashColor: {r: 1, g: 0, b: 0, a: 1}
   shakeDuration: 0.15
   shakeMagnitude: 0.4
@@ -1030,10 +1032,26 @@ MonoBehaviour:
   - {x: 0.80405426, y: -1.2094054, z: 0}
   m_ShapePathHash: -803534617
   m_Mesh: {fileID: 0}
-  m_InstanceId: -1556
+  m_InstanceId: -3720
   m_LocalBounds:
     m_Center: {x: -0.007171631, y: -0.0022640228, z: 0}
     m_Extent: {x: 1.0977707, y: 1.2089868, z: 0}
+--- !u!114 &6461549006331171609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6453280248707733763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c2fc493d3f80da499bdc1503bf7e3ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 1306762602531067334}
+  flashColor: {r: 0.964228, g: 0.25943398, b: 1, a: 1}
+  shakeDuration: 0.6
+  shakeMagnitude: 0.5
 --- !u!1 &8051486956353136741
 GameObject:
   m_ObjectHideFlags: 0
@@ -1148,6 +1166,7 @@ GameObject:
   - component: {fileID: 2961924268343594234}
   - component: {fileID: 6591155542283745218}
   - component: {fileID: 4976276736131499519}
+  - component: {fileID: 6911462873456449348}
   m_Layer: 0
   m_Name: Abilities
   m_TagString: Untagged
@@ -1216,6 +1235,24 @@ MonoBehaviour:
   OnEnemyAttack:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &6911462873456449348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8120154399766981587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b25f5abaaa8c34e4b8485e8fff318733, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: {fileID: 8506391581786044554}
+  player: {fileID: 0}
+  shakeVisual: {fileID: 6461549006331171609}
+  precentThreshold: 0.25
+  posOffset: 1.5
+  abilityUsed: 0
 --- !u!1 &8408702783455456184
 GameObject:
   m_ObjectHideFlags: 0
