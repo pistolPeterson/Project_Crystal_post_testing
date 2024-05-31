@@ -8,10 +8,14 @@ public class MoveTowardsCrystalES : EnemyAIState
     [SerializeField] private EnemyHealthPoints enemyHealth;
     [SerializeField] private EnemyMovement movement;
     [SerializeField] private Crystal currentCrystal;
+    
     public override void Start() {
         base.Start();
         enemyHealth.OnHurt.AddListener(OnAttacked);
-        currentCrystal = CrystalManager.Instance.GetCurrentCrystal();
+
+        if(CrystalManager.Instance.GetCurrentCrystal() != null)
+            currentCrystal = CrystalManager.Instance.GetCurrentCrystal();
+      
     }
     public override void OnStateEnter() {
         movement.SetTarget(currentCrystal.transform);

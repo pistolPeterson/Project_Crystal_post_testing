@@ -39,6 +39,7 @@ public class CrystalManager : MonoBehaviour
 
     public Crystal GetCurrentCrystal()
     {
+        
         return currentCrystal;
     }
     public void SetCrystalComponents(Crystal curr){
@@ -77,6 +78,7 @@ public class CrystalManager : MonoBehaviour
         if (Instance) {
             Destroy(this.gameObject);
         } else {
+            Debug.Log("assigning a crystal");
             Instance = this;
         }
     }

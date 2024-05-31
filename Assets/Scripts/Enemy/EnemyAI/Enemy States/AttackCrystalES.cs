@@ -13,7 +13,8 @@ public class AttackCrystalES : EnemyAIState
     public override void Start() {
         base.Start();
         enemyHealth.OnHurt.AddListener(OnAttacked);
-        currentCrystal = CrystalManager.Instance.GetCurrentCrystal();
+        if (CrystalManager.Instance.GetCurrentCrystal() != null)
+            currentCrystal = CrystalManager.Instance.GetCurrentCrystal();
     }
     public override void OnStateEnter() {
         movement.Stop();
