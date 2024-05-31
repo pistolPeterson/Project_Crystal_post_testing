@@ -11,6 +11,7 @@ public class MoveTowardsCrystalES : EnemyAIState
     public override void Start() {
         base.Start();
         enemyHealth.OnHurt.AddListener(OnAttacked);
+        currentCrystal = CrystalManager.Instance.GetCurrentCrystal();
     }
     public override void OnStateEnter() {
         movement.SetTarget(currentCrystal.transform);

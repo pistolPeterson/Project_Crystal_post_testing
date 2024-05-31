@@ -597,7 +597,7 @@ MonoBehaviour:
   hpBarCanvas: {fileID: 4658370693168500359}
   hpEnemyFilling: {fileID: 6897023745962792974}
   hp: {fileID: 8506391581786044554}
-  damageNumText: {fileID: 6511193548357831249}
+  enemyAttack: {fileID: 0}
 --- !u!114 &3033950607122504338
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -622,7 +622,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e6b879f6f7ffd04f8222fc80ecd647d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flashMaterial: {fileID: 1306762602531067334}
+  spriteRenderer: {fileID: 1306762602531067334}
   flashColor: {r: 1, g: 0, b: 0, a: 1}
   shakeDuration: 0.15
   shakeMagnitude: 0.4
@@ -659,7 +659,7 @@ MonoBehaviour:
   - {x: 0.80405426, y: -1.2094054, z: 0}
   m_ShapePathHash: -803534617
   m_Mesh: {fileID: 0}
-  m_InstanceId: 78202
+  m_InstanceId: 127070
   m_LocalBounds:
     m_Center: {x: -0.007171631, y: -0.0022640228, z: 0}
     m_Extent: {x: 1.0977707, y: 1.2089868, z: 0}
@@ -810,11 +810,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff9b249be76e9a3419e3c8e3beac5c3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxDamage: 10
-  currentDamage: 10
-  maxLifeTime: 2
   cooldown: 0
-  manaCost: 0
   IsActive: 0
   userMana: {fileID: 0}
   OnAbilityUsage:
@@ -824,6 +820,8 @@ MonoBehaviour:
   isPlayerShooting: 0
   enemyFireRate: 0.8
   playerFireRate: 0.1
+  maxDamage: 10
+  currentDamage: 10
   OnAttack:
     m_PersistentCalls:
       m_Calls: []

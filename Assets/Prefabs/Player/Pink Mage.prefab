@@ -5518,11 +5518,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff9b249be76e9a3419e3c8e3beac5c3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxDamage: 5
-  currentDamage: 0
-  maxLifeTime: 0.8
   cooldown: 0.25
-  manaCost: 2
   IsActive: 0
   userMana: {fileID: 3038308969333731784}
   OnAbilityUsage:
@@ -5532,6 +5528,8 @@ MonoBehaviour:
   isPlayerShooting: 1
   enemyFireRate: 0
   playerFireRate: 0.25
+  maxDamage: 5
+  currentDamage: 0
   OnAttack:
     m_PersistentCalls:
       m_Calls: []
@@ -5547,11 +5545,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16ce4dc2012641549b26ff27e597bb80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxDamage: 10
-  currentDamage: 0
-  maxLifeTime: 0.7
   cooldown: 0.5
-  manaCost: 10
   IsActive: 1
   userMana: {fileID: 3038308969333731784}
   OnAbilityUsage:
@@ -5559,6 +5553,8 @@ MonoBehaviour:
       m_Calls: []
   projectilePrefab: {fileID: 4827135260225847506, guid: 5e5a2c1d4410a2842ab80b10e98c9c2a, type: 3}
   maxPiercingAmount: 2
+  maxDamage: 10
+  currentDamage: 0
 --- !u!114 &3258390402626218228
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5571,11 +5567,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b88fe5eccee5cfa4aa4ca7af0b34cb30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxDamage: 0
-  currentDamage: 0
-  maxLifeTime: 0
   cooldown: 2
-  manaCost: 4.5
   IsActive: 1
   userMana: {fileID: 3038308969333731784}
   OnAbilityUsage:
@@ -5737,7 +5729,7 @@ MonoBehaviour:
   - {x: 0.46875, y: -0.6875, z: 0}
   m_ShapePathHash: -40504043
   m_Mesh: {fileID: 0}
-  m_InstanceId: 103564
+  m_InstanceId: 125690
   m_LocalBounds:
     m_Center: {x: 0, y: -0.34375, z: 0}
     m_Extent: {x: 0.46875, y: 0.34375, z: 0}
@@ -5753,7 +5745,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e6b879f6f7ffd04f8222fc80ecd647d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flashMaterial: {fileID: 6262924791448149945}
+  spriteRenderer: {fileID: 6262924791448149945}
   flashColor: {r: 1, g: 0, b: 0, a: 1}
   shakeDuration: 0.15
   shakeMagnitude: 0.4
@@ -5769,10 +5761,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d51ee2dced7162e4abe51f39e5771bf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flashMaterial: {fileID: 6262924791448149945}
+  spriteRenderer: {fileID: 6262924791448149945}
   flashColor: {r: 0, g: 0, b: 1, a: 1}
   shakeDuration: 0.15
   shakeMagnitude: 0.4
+  teleportAbility: {fileID: 3258390402626218228}
 --- !u!1 &7671935291099421684
 GameObject:
   m_ObjectHideFlags: 0

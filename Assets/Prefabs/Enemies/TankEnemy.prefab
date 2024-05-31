@@ -773,6 +773,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 350
+  canMove: 1
   currentSpeed: 0
 --- !u!1 &5609662506151294143
 GameObject:
@@ -1048,7 +1049,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e6b879f6f7ffd04f8222fc80ecd647d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flashMaterial: {fileID: 1306762602531067334}
+  spriteRenderer: {fileID: 1306762602531067334}
   flashColor: {r: 1, g: 0, b: 0, a: 1}
   shakeDuration: 0.15
   shakeMagnitude: 0.4
@@ -1084,7 +1085,7 @@ MonoBehaviour:
   - {x: 0.80792236, y: -1.4052019, z: -0.00000036042184}
   m_ShapePathHash: -1582723859
   m_Mesh: {fileID: 0}
-  m_InstanceId: -3216
+  m_InstanceId: 127668
   m_LocalBounds:
     m_Center: {x: -0.037345886, y: -0.2794497, z: 0}
     m_Extent: {x: 1.4293442, y: 1.1626766, z: 0}

@@ -18,7 +18,6 @@ public class AttackPlayerES : EnemyAIState
         playerTransform = GameObject.FindWithTag("Player").transform;
     }
     public override void OnStateEnter() {
-        Debug.Log("Enter Player Attack");
         movement.Stop();
     }
     public override void OnStateUpdate() {

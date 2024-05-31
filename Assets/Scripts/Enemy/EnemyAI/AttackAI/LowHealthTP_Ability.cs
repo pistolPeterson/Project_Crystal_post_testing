@@ -6,6 +6,7 @@ public class LowHealthTP_Ability : MonoBehaviour
 {
     [SerializeField] private EnemyHealthPoints hp;
     [SerializeField] private Transform player;
+    [SerializeField] private LowHealthTPVisual shakeVisual;
     [SerializeField] private float precentThreshold = 0.25f;
     [SerializeField] private float posOffset = 1f;
     public bool abilityUsed = false;
@@ -19,8 +20,8 @@ public class LowHealthTP_Ability : MonoBehaviour
 
         var threshHold = hp.maxHP * precentThreshold;
         if (hp.currentHP <= threshHold) {
-            Debug.Log("HEEEYAH");
-            transform.position = new Vector3(player.position.x+posOffset, player.position.y + posOffset);
+            shakeVisual.TriggerShakeVisual();
+            transform.parent.gameObject.transform.position = new Vector2(player.position.x + posOffset, player.position.y - posOffset);
             abilityUsed = true;
         }
     }
