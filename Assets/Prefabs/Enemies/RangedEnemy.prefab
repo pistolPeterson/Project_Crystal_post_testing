@@ -1032,7 +1032,7 @@ MonoBehaviour:
   - {x: 0.80405426, y: -1.2094054, z: 0}
   m_ShapePathHash: -803534617
   m_Mesh: {fileID: 0}
-  m_InstanceId: -3720
+  m_InstanceId: -39382
   m_LocalBounds:
     m_Center: {x: -0.007171631, y: -0.0022640228, z: 0}
     m_Extent: {x: 1.0977707, y: 1.2089868, z: 0}
@@ -1230,8 +1230,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 971724485026557118, guid: 1c525282c506c7b43b41538f12340261, type: 3}
   attackDamage: 1
-  attackSpeed: 1.5
+  attackSpeed: 1
   spawnLocation: {fileID: 5987814999040677907}
+  predictiveStepsAhead: 3
   OnEnemyAttack:
     m_PersistentCalls:
       m_Calls: []
