@@ -9,7 +9,8 @@ public class EnemyRangedBasicAttack : MonoBehaviour
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private int attackDamage = 1;
     [SerializeField] private float attackSpeed = 1.5f;
-    [SerializeField] private Transform spawnLocation; 
+    [SerializeField] private Transform spawnLocation;
+    [SerializeField] private float predictiveStepsAhead = 3f;
     [HideInInspector] public UnityEvent OnEnemyAttack;
     private float lastEnemyAttackTime = 0f;
   
@@ -19,7 +20,18 @@ public class EnemyRangedBasicAttack : MonoBehaviour
         Projectile projectile = projectileInstancePrefab.GetComponent<Projectile>();
         projectile.SetProjectileData(InitializeProjectileData(attackDirection));
     }
-
+    public void PredictiveAttackTarget(Transform currentTarget) {
+        PlayerMovement potentialPlayerMovement = currentTarget?.GetComponent<PlayerMovement>();
+        if (potentialPlayerMovement) {
+            Vector2 directionToTarget = (((Vector3)potentialPlayerMovement.GetMovementInput() * predictiveStepsAhead + currentTarget.position) - transform.parent.transform.position).normalized;
+            DelayedSpawn(directionToTarget);
+            OnEnemyAttack?.Invoke();
+        }
+        else {
+            Debug.Log("not predictive");
+            AttackTarget(currentTarget);
+        }        
+    }
     public void AttackTarget(Transform currentTarget)
     {
         Vector2 directionToTarget = (currentTarget.position - transform.parent.transform.position).normalized;
